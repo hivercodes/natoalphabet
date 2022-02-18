@@ -1,16 +1,12 @@
-# This is a sample Python script.
+import pandas
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+data = pandas.read_csv("nato_phonetic_alphabet.csv")
+
+user_input = input("What do you want natoized?:")
+
+user_input_list = [n.upper() for n in user_input]
+
+exit_list = [row.code for (index, row) in data.iterrows() if row.letter in user_input_list]
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+print(exit_list)
