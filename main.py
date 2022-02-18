@@ -6,7 +6,8 @@ user_input = input("What do you want natoized?:")
 
 user_input_list = [n.upper() for n in user_input]
 
-exit_list = [row.code for (index, row) in data.iterrows() if row.letter in user_input_list]
+exit_dict = {row.letter:row.code for (index, row) in data.iterrows()}
 
+exit_list = [code for (letter, code) in exit_dict.items() for l in user_input_list if letter == l]
 
 print(exit_list)
